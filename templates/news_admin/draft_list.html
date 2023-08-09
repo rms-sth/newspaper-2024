@@ -1,0 +1,24 @@
+{% extends "news_admin/base.html" %}
+
+{% block content %}
+  <div class="row">
+    <div class="col">
+      {% for post in posts %}
+        <div class="post">
+          <h1>
+            <a href="{% url 'news_admin:draft-detail' post.pk %}">{{ post.title }}</a>
+          </h1>
+           <img src="{{ post.featured_image.url }}"
+             alt="{{ post.title }}"
+             height="420px"
+             width="860px"
+             class="mt-2 mb-2" />
+          <div class="date author">@{{ post.author.username }}</div>
+          <p>
+            {{ post.content|truncatechars:200 }} <a href="{% url 'news_admin:draft-detail' post.pk %}">View more</a>
+          </p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %}
