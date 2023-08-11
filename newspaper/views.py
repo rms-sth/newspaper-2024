@@ -177,7 +177,6 @@ from django.core.paginator import Paginator, PageNotAnInteger
 from django.db.models import Q
 
 
-
 class PostSearchView(View):
     template_name = "aznews/list/search.html"
 
@@ -205,7 +204,9 @@ class PostSearchView(View):
             {"page_obj": posts, "query": query},
         )
 
+
 from django.http import JsonResponse
+
 
 class NewsletterView(View):
     def post(self, request):
