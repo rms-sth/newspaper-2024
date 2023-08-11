@@ -25,11 +25,11 @@
                      aria-selected="true">All</a>
                   {% for category in categories %}
                     <a class="nav-item nav-link"
-                       id="nav-{{ category.name }}-tab"
+                       id="nav-{{ category.name|slugify }}-tab"
                        data-toggle="tab"
-                       href="#nav-{{ category.name }}"
+                       href="#nav-{{ category.name|slugify }}"
                        role="tab"
-                       aria-controls="nav-{{ category.name }}"
+                       aria-controls="nav-{{ category.name|slugify }}"
                        aria-selected="false">{{ category.name }}</a>
                   {% endfor %}
                 </div>
@@ -70,9 +70,9 @@
               {% for category in categories %}
                 <!-- Card two -->
                 <div class="tab-pane fade"
-                     id="nav-{{ category.name }}"
+                     id="nav-{{ category.name|slugify }}"
                      role="tabpanel"
-                     aria-labelledby="nav-{{ category.name }}-tab">
+                     aria-labelledby="nav-{{ category.name|slugify }}-tab">
                   <div class="whats-news-caption">
                     <div class="row">
                       {% for post in category.post_set.all|slice:":4" %}
