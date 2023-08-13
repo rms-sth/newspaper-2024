@@ -24,6 +24,21 @@
                 <ul class="header-social">
                   {% if user.is_authenticated %}
                     <li>
+                      <a href="{% url 'report:users' %}" title="Download Users">
+                        <i class="fas fa-download"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'report:post-pdf-download' %}" title="Pdf Download">
+                        <i class="fas fa-arrow-alt-circle-down"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'report:post-pdf-view' %}" title="Pdf View">
+                        <i class="far fa-file-pdf"></i>
+                      </a>
+                    </li>
+                    <li>
                       <a href="{% url 'news_admin:draft-list' %}"><i class="fas fa-paste"></i></a>
                     </li>
                     <li>
@@ -113,7 +128,7 @@
                 <i class="fas fa-search special-tag"></i>
                 <div class="search-box">
                   <form action="{% url 'post-search' %}" method="get">
-                    <input type="text" placeholder="Search" value="{{ query }}" name="query"/>
+                    <input type="text" placeholder="Search" value="{{ query }}" name="query" />
                   </form>
                 </div>
               </div>
