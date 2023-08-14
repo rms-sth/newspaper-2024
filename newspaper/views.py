@@ -178,7 +178,7 @@ from django.db.models import Q
 
 
 class PostSearchView(View):
-    template_name = "aznews/list/search.html"
+    template_name = "aznews/list/list.html"
 
     def get(self, request, *args, **kwargs):
         query = request.GET["query"]  # query=plus search => title=plus or content=plus

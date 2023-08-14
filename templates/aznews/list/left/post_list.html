@@ -17,16 +17,19 @@
       <p>{{ post.content|striptags|safe|truncatechars:300 }}</p>
       <ul class="blog-info-link">
         <li>
-          <a href="#"><i class="fa fa-user"></i>{{ post.tag.all|join:", " }}</a>
+          <a href="#"><i class="fa fa-user"></i>{{ post.author.username|lower }}</a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-tag"></i>{{ post.tag.all|join:", " }}</a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-paste"></i>{{ post.category.name|title }}</a>
         </li>
         <li>
           <a href="#"><i class="fa fa-eye"></i>{{ post.views_count }} Views</a>
         </li>
         <li>
-          <a href="#"><i class="fa fa-category"></i>{{ post.category.name|title }}</a>
-        </li>
-        <li>
-          <a href="#"><i class="fa fa-comments"></i> 03 Comments</a>
+          <a href="#"><i class="fa fa-comments"></i> {{ post.comment_set.count }} Comments</a>
         </li>
       </ul>
     </div>
