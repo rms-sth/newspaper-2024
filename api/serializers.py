@@ -1,6 +1,6 @@
 from django.contrib.auth.models import Group, User
 from rest_framework import serializers
-from newspaper.models import Post, Tag, Category
+from newspaper.models import Contact, Newsletter, Post, Tag, Category, Comment
 
 
 # ORM => Object Relationship Mapping
@@ -46,14 +46,45 @@ class PostSerializer(serializers.ModelSerializer):
             "title",
             "content",
             "featured_image",
-            "views_count",
             "status",
-            "published_at",
-            "author",
             "tag",
             "category",
+            # read only
+            "author",
+            "views_count",
+            "published_at",
         ]
+        extra_kwargs = {
+            "author": {"read_only": True},
+            "views_count": {"read_only": True},
+            "published_at": {"read_only": True},
+        }
 
     def validate(self, data):
         data["author"] = self.context["request"].user
         return data
+
+
+from rest_framework import serializers
+
+
+class PostPublishSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+
+
+class NewsletterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Newsletter
+        fields = "__all__"
+
+
+class ContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contact
+        fields = "__all__"
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = "__all__"
