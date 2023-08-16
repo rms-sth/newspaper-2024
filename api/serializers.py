@@ -1,6 +1,6 @@
 from django.contrib.auth.models import Group, User
 from rest_framework import serializers
-from newspaper.models import Newsletter, Post, Tag, Category
+from newspaper.models import Contact, Newsletter, Post, Tag, Category, Comment
 
 
 # ORM => Object Relationship Mapping
@@ -75,4 +75,16 @@ class PostPublishSerializer(serializers.Serializer):
 class NewsletterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Newsletter
+        fields = "__all__"
+
+
+class ContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contact
+        fields = "__all__"
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
         fields = "__all__"
