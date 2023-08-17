@@ -23,6 +23,8 @@ from django_summernote.admin import SummernoteModelAdmin
 
 class PostAdmin(SummernoteModelAdmin):
     summernote_fields = ("content",)
+    list_display = ("title", "author", "views_count")
+    date_hierarchy = "published_at"
 
 
 admin.site.register(Post, PostAdmin)

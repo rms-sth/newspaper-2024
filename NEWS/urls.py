@@ -20,6 +20,7 @@ from django.contrib.auth import views
 from django.urls import include, path
 
 urlpatterns = [
+    path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path("admin/", admin.site.urls),
     path("summernote/", include("django_summernote.urls")),
     path("news-admin/", include("blog_app.urls")),
