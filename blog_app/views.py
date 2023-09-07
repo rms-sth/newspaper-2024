@@ -104,7 +104,7 @@ class PostUpdateView(LoginRequiredMixin, View):
         form = PostForm(instance=post)
         return render(
             request,
-            "post_create.html",
+            "news_admin/post_create.html",
             {"form": form},
         )
 
@@ -119,7 +119,7 @@ class PostUpdateView(LoginRequiredMixin, View):
                 return redirect("news_admin:draft-detail", post.pk)
         return render(
             request,
-            "post_create.html",
+            "news_admin/post_create.html",
             {"form": form},
         )
 
