@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.utils import timezone
 
 from blog_app.forms import PostForm
-from newspaper.models import Post, Tag, Category
+from newspaper.models import Post
 from django.views.generic import ListView, DetailView, View, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -75,7 +75,6 @@ class PostDeleteView(LoginRequiredMixin, View):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    # template_name = "admin_lte/base.html"
     template_name = "news_admin/post_create.html"
     form_class = PostForm
     success_url = reverse_lazy("news_admin:post-list")
@@ -143,21 +142,3 @@ def post_update(request, pk):
         "news_admin/post_create.html",
         {"form": form},
     )
-
-
-class TagListView(LoginRequiredMixin, ListView):
-    model = Tag
-    template_name = "admin_lte/tag_list.html"
-    context_object_name = "tags"
-
-
-class CategoryListView(LoginRequiredMixin, ListView):
-    model = Category
-    template_name = "admin_lte/category_list.html"
-    context_object_name = "categories"
-
-
-class AllPostListView(LoginRequiredMixin, ListView):
-    model = Post
-    template_name = "admin_lte/post_list.html"
-    context_object_name = "posts"

@@ -45,4 +45,19 @@ urlpatterns = [
         views.PostUpdateView.as_view(),
         name="post-update",
     ),
+    path(
+        "tag-list/",
+        views.TagListView.as_view(),
+        name="tag-list",
+    ),
+    path(
+        "category-list/",
+        views.CategoryListView.as_view(),
+        name="category-list",
+    ),
+    path(
+        "post-list/",
+        views.AllPostListView.as_view(),
+        name="all-post-list",
+    ),
 ]
