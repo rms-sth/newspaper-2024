@@ -1,0 +1,2118 @@
+{
+	"info": {
+		"_postman_id": "549a91bb-455a-4640-b033-f8cbe49c0850",
+		"name": "az_news",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7627953"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "get user list",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user detail",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/users/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create user",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"ram\",\n    \"email\": \"ram@gmail.com\",\n    \"groups\":[]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create user with groups",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"ramesh\",\n    \"email\": \"ramesh@gmail.com\",\n    \"groups\": [\n        1\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "partial update user",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Ram\",\n    \"last_name\": \"Bahadur\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/users/2/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"ram\",\n    \"email\": \"ram@gmail.com\",\n    \"first_name\": \"Ram\",\n    \"last_name\": \"Hari\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/users/2/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/users/2/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new user",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "groups",
+			"item": [
+				{
+					"name": "get all groups",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/groups/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"groups",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get group detail",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/groups/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"groups",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get with pagination",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/groups/?page=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"groups",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create group",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"python 3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/groups/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"groups",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "partial update group",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"django 4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/groups/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"groups",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update group",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"python 3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/groups/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"groups",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete group",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/groups/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"groups",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tags",
+			"item": [
+				{
+					"name": "get tag list",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/tags/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"tags",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get tag detail",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/tags/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"tags",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create tag",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"name\":\"Hello\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/tags/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"tags",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "partial update tag",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"name\":\"internet\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/tags/12/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"tags",
+								"12",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update tag",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Internet\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/tags/16/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"tags",
+								"16",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete tag",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/tags/16/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"tags",
+								"16",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "get category list",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/categories/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "top category list",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/top-categories/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"top-categories",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get category detail",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/categories/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create category",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"name\":\"economy\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/categories/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "partial update category",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"name\":\"Economy\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/categories/12/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"12",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update category",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Economy\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/categories/8/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"8",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete category",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/categories/13/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"13",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "posts",
+			"item": [
+				{
+					"name": "get post list",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get post detail",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/posts/2/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get draft list",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/draft-list/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"draft-list",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post list by category",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/post-by-category/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"post-by-category",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post list by tag",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/post-by-tag/2/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"post-by-tag",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create post",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Pangolin conservation in Nepal awaits enhanced interest, investment, and incentives\n",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "A pangolin baby born in police custody in Bhaktapur in 2020 when its mother was seized from smugglers by Nepal Police. Photo: Kumar Paudel/ Greenhood Nepal\nIn 2020, a live pangolin was found in Bhaktapur, Nepal. The pangolin in the night gave birth to its offspring (also called pangopup). Pangolin conservationist Kumar Paudel got the news and went to see the mammal and its newborn. “They needed immediate medical attention,” Paudel recalls, “Hence, I tried to reach out to various stakeholders, including the zoo and wildlife conservation organisations. But I soon realised that no expert or personnel could tend to them.” \n\nPaudel, also a co-chair of the IUCN SSC Pangolin Specialist Group for South Asia, had been researching and working in favour of pangolin conservation for more than five years at that time. But when he could not get any expert to tend to the estranged mammals, Paudel realised the harsh reality–how Nepal lacked not just the expert but interest in pangolins. “I realised it would have been different if it was a tiger cub or an elephant calf.”\n\nPangolins are arguably one of the most trafficked animals in the world. A total of 56 pangolin seizures took place in Nepal between 2015 and 2020, involving the confiscation of pangolin scales, hides as well as live and dead pangolins. It has been a problem for ages. Nepal has been able to control pangolin poaching in some pocket areas through various conservation efforts, but it still has a lot to do before there is a complete stop, stakeholders say.\n\nPioneering pangolin conservation\nPresence records of Chinese and Indian pangolins in Nepal. Data Source: Department of Survey, Department of\nNational Parks and Wildlife Conservation, National Trust for Nature Conservation, Government of Nepal. pangolin conservation\nPresence records of Chinese and Indian pangolins in Nepal. Data Source: Department of Survey, Department of National Parks and Wildlife Conservation, National Trust for Nature Conservation, Government of Nepal.\nOut of the eight pangolin species in the world, four in Africa and four in Asia, Nepal houses two–the Chinese (Manis pentadactyla) pangolin and the Indian (Manis crassicaudata) pangolin. Both are listed as endangered on IUCN red list and as protected in the National Parks and Wildlife Conservation Act 1973. \n\nPangolins, also known as scaly anteaters, are small, solitary, nocturnal animals. Their scales (made of keratin) have been used to make traditional Chinese medicine for thousands of years. It is said to promote blood circulation and increase lactation in pregnant women. They are also used as meat while hides are used to make jackets and as a status symbol.\n\nBut because the pangolins, like other small species, indicate a healthy ecosystem, pangolin conservation efforts in Nepal began with the revival of the IUCN pangolin specialist group in 2012. It started important dialogues about pangolin conservation and research.\n\nPaudel was one of the pioneers who started annual roundtable discussions on pangolin conservation in Nepal in 2015, on the occasion of World Pangolin Day (the third Saturday of February). The discussion highlighted the need to raise awareness about the importance of pangolins and their role in the ecosystem as well as the need for collaborative efforts and an action plan for pangolin conservation in Nepal, which later catalysed the national action plan (2018-2022).\n\nThe latest edition of such a discussion was held in Hetauda of Makawanpur last month, in which stakeholders vowed to associate pangolin conservation with the district’s identity.\n\nBishnu Prasad Acharya, the division forest officer based in Manahari of the district, says he proposed declaring pangolin as a pride of the district to accelerate local conservation efforts because he knows such small species cannot receive national priority immediately.\n\n“Awareness is still not on par for pangolin conservation even among the officials so much so that they think pangolins are fish and not mammals,” he says, adding his team is sensitising stakeholders and members of the public simultaneously.\n\nContinuing poaching\n\nEven though it has been more than a decade since Nepal started its efforts and dialogues in favour of the pangolin conservation and protection of their habitat, the country has not been able to control the problem of poaching.\n\nStakeholders say estimating the size of the pangolin population in Nepal is difficult because they are a burrowing species and highly elusive. “Yet, we can say they are shy and easy to hunt and poach due to their size–making them easy targets,” says Ambika Prasad Khatiwada, the Wildlife Crime Control Unit focal person at National Trust for Nature Conservation (NTNC).\n\nPoaching is continuing also because the existing conservation law is not implemented properly. There is a provision that poachers are liable to get 15 years of jail or Rs 1 million fine, but poachers are roaming free, stakeholders complain.\n\nTheir importance in the Chinese market has increased the illegal trade of the species, says Paudel. “In China, almost 90 per cent of the Chinese species are gone. But with the demand still there, species in Nepal and Africa are being smuggled into China via many unguarded routes and through borders.”\n\nsmuggled pangolin scales by kg\nPangolin scales confiscated in Nepal between 2010 and July 2018. Data compiled by A Khatiwada from online news reports in Nepal. [Screenshot taken from the paper ‘Community conservation in Nepal opportunities and challenges for pangolin conservation’]\nDoes that mean that there is no checking at border points? Stakeholders say law enforcers have been active in monitoring the pangolin trade and awareness, but the network runs too deep that it is difficult to track down all poachers. “The Chinese government too has been active lately in pangolin conservation, with consideration of the recent pandemic and spread of zoonotic diseases,” adds Paudel.\n\nPangolins are found in Nepal from east to west, outside protected areas or national parks, which means local stakeholders need to work together. “Pangolin conservation is not just the responsibility of experts and organisations, but also of individuals including locals to do their part in protecting these animals and their habitats,” iterates Khatiwada.\n\nLocal intervention important\nKhatiwada laments that poaching increases not because the locals lack knowledge, but because of greed or need. “The local poaching network grew because of the monetary gains and benefits from the illegal market. Because of the poor economic conditions, they get swayed very easily,” Khatiwada, who is also doing a study on pangolin-human interaction in Nepal for his PhD, says.\n\nTo counter the problem, Khatiwada suggests that the three tiers of the government need to be more active and create more income-generating opportunities for the locals to mobilise the community for monitoring, protection and habitat conservation. Makawanpur’s forest officer Acharya also backs the idea of incentivising pangolin conservation efforts at the local level.\n\nlocal map of cameras installed in nepali districts to increase pangolin conservation and monitoring\nShaded areas in Nepal represent protected land, and shaded areas surrounding camera sites represent human density in local government areas (wards of municipalities). [Screenshot taken from the paper ‘Human influence on burrow activity of the Chinese pangolin in Nepal’]\nBut this is not easy. “It is not yet a national priority like other megafaunas like tigers and rhinos. Getting a sizable budget nationally or internationally has been a struggle because we lack capacitated skilled experts to win the funds,” Khatiwada says, “On top of that, the global and Nepali economic crisis is also posing a threat to the budget.”\n\nYet Acharya is hopeful that pangolin conservation and efforts will get a place in the red book in the next fiscal year along with other national and international stakeholders being more active and effective.\n\nThe illegal trades have been operating locally. So, it can be said that local focal persons can counter it too. “So far, the network [in Makawanpur] has been voluntary to monitor pangolins, scare away poachers, and inform the police about any poachers. The network has been growing and reached 200 people,” Acharya informs.\n\nPangolins have been monitored in different parts of Nepal to save them from potential poachers. Khatiwada has led the initiative to install cameras in Taplejung, Makwanpur, Chitwan, and Gorkha. “We saw that it discouraged poachers in these areas. However, these cameras are expensive and require more monetary resources.”\n\nOther threats\nrescued pangolin from gorkha\nA pangolin rescued by the Division Forest Office, Gorkha, in 2021. Photo: Kushal Shrestha/ Greenhood Nepal\nNot only in Nepal, but pangolin conservation has also been a difficult job internationally. “There is still a lack of concrete research on pangolins internationally, resulting in limited knowledge about their preferences, behavioural patterns, migrational patterns and their role in ecological balance,” Khatiwada, says, “In turn, it also hinders the proper action.”\n\nThe pangolin population is also presumed to be decreasing due to climate change. “They are found more in hilly areas, so heavy flooding and landslides, possibly induced by climate change, as well as the forest fires in dry seasons are increasing threats to their habitat. Other than that unplanned expansion and road infrastructures have also encroached upon their habitat,” Khatiwada says.",
+									"type": "text"
+								},
+								{
+									"key": "featured_image",
+									"type": "file",
+									"src": "/Users/rameshpradhan/Desktop/pp/Curtis-Waters.jpg"
+								},
+								{
+									"key": "category",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								},
+								{
+									"key": "tag",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "tag",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "publish post",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/post-publish/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"post-publish",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "partial update post",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"title\":\"Pangolins conservation in Nepal awaits enhanced interest, investment, and incentives??\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/posts/11/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"11",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update post",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Pangolin conservation in Nepal awaits enhanced interest, investment, and incentives",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "A pangolin baby born in police custody in Bhaktapur in 2020 when its mother was seized from smugglers by Nepal Police. Photo: Kumar Paudel/ Greenhood Nepal\nIn 2020, a live pangolin was found in Bhaktapur, Nepal. The pangolin in the night gave birth to its offspring (also called pangopup). Pangolin conservationist Kumar Paudel got the news and went to see the mammal and its newborn. “They needed immediate medical attention,” Paudel recalls, “Hence, I tried to reach out to various stakeholders, including the zoo and wildlife conservation organisations. But I soon realised that no expert or personnel could tend to them.” \n\nPaudel, also a co-chair of the IUCN SSC Pangolin Specialist Group for South Asia, had been researching and working in favour of pangolin conservation for more than five years at that time. But when he could not get any expert to tend to the estranged mammals, Paudel realised the harsh reality–how Nepal lacked not just the expert but interest in pangolins. “I realised it would have been different if it was a tiger cub or an elephant calf.”\n\nPangolins are arguably one of the most trafficked animals in the world. A total of 56 pangolin seizures took place in Nepal between 2015 and 2020, involving the confiscation of pangolin scales, hides as well as live and dead pangolins. It has been a problem for ages. Nepal has been able to control pangolin poaching in some pocket areas through various conservation efforts, but it still has a lot to do before there is a complete stop, stakeholders say.\n\nPioneering pangolin conservation\nPresence records of Chinese and Indian pangolins in Nepal. Data Source: Department of Survey, Department of\nNational Parks and Wildlife Conservation, National Trust for Nature Conservation, Government of Nepal. pangolin conservation\nPresence records of Chinese and Indian pangolins in Nepal. Data Source: Department of Survey, Department of National Parks and Wildlife Conservation, National Trust for Nature Conservation, Government of Nepal.\nOut of the eight pangolin species in the world, four in Africa and four in Asia, Nepal houses two–the Chinese (Manis pentadactyla) pangolin and the Indian (Manis crassicaudata) pangolin. Both are listed as endangered on IUCN red list and as protected in the National Parks and Wildlife Conservation Act 1973. \n\nPangolins, also known as scaly anteaters, are small, solitary, nocturnal animals. Their scales (made of keratin) have been used to make traditional Chinese medicine for thousands of years. It is said to promote blood circulation and increase lactation in pregnant women. They are also used as meat while hides are used to make jackets and as a status symbol.\n\nBut because the pangolins, like other small species, indicate a healthy ecosystem, pangolin conservation efforts in Nepal began with the revival of the IUCN pangolin specialist group in 2012. It started important dialogues about pangolin conservation and research.\n\nPaudel was one of the pioneers who started annual roundtable discussions on pangolin conservation in Nepal in 2015, on the occasion of World Pangolin Day (the third Saturday of February). The discussion highlighted the need to raise awareness about the importance of pangolins and their role in the ecosystem as well as the need for collaborative efforts and an action plan for pangolin conservation in Nepal, which later catalysed the national action plan (2018-2022).\n\nThe latest edition of such a discussion was held in Hetauda of Makawanpur last month, in which stakeholders vowed to associate pangolin conservation with the district’s identity.\n\nBishnu Prasad Acharya, the division forest officer based in Manahari of the district, says he proposed declaring pangolin as a pride of the district to accelerate local conservation efforts because he knows such small species cannot receive national priority immediately.\n\n“Awareness is still not on par for pangolin conservation even among the officials so much so that they think pangolins are fish and not mammals,” he says, adding his team is sensitising stakeholders and members of the public simultaneously.\n\nContinuing poaching\n\nEven though it has been more than a decade since Nepal started its efforts and dialogues in favour of the pangolin conservation and protection of their habitat, the country has not been able to control the problem of poaching.\n\nStakeholders say estimating the size of the pangolin population in Nepal is difficult because they are a burrowing species and highly elusive. “Yet, we can say they are shy and easy to hunt and poach due to their size–making them easy targets,” says Ambika Prasad Khatiwada, the Wildlife Crime Control Unit focal person at National Trust for Nature Conservation (NTNC).\n\nPoaching is continuing also because the existing conservation law is not implemented properly. There is a provision that poachers are liable to get 15 years of jail or Rs 1 million fine, but poachers are roaming free, stakeholders complain.\n\nTheir importance in the Chinese market has increased the illegal trade of the species, says Paudel. “In China, almost 90 per cent of the Chinese species are gone. But with the demand still there, species in Nepal and Africa are being smuggled into China via many unguarded routes and through borders.”\n\nsmuggled pangolin scales by kg\nPangolin scales confiscated in Nepal between 2010 and July 2018. Data compiled by A Khatiwada from online news reports in Nepal. [Screenshot taken from the paper ‘Community conservation in Nepal opportunities and challenges for pangolin conservation’]\nDoes that mean that there is no checking at border points? Stakeholders say law enforcers have been active in monitoring the pangolin trade and awareness, but the network runs too deep that it is difficult to track down all poachers. “The Chinese government too has been active lately in pangolin conservation, with consideration of the recent pandemic and spread of zoonotic diseases,” adds Paudel.\n\nPangolins are found in Nepal from east to west, outside protected areas or national parks, which means local stakeholders need to work together. “Pangolin conservation is not just the responsibility of experts and organisations, but also of individuals including locals to do their part in protecting these animals and their habitats,” iterates Khatiwada.\n\nLocal intervention important\nKhatiwada laments that poaching increases not because the locals lack knowledge, but because of greed or need. “The local poaching network grew because of the monetary gains and benefits from the illegal market. Because of the poor economic conditions, they get swayed very easily,” Khatiwada, who is also doing a study on pangolin-human interaction in Nepal for his PhD, says.\n\nTo counter the problem, Khatiwada suggests that the three tiers of the government need to be more active and create more income-generating opportunities for the locals to mobilise the community for monitoring, protection and habitat conservation. Makawanpur’s forest officer Acharya also backs the idea of incentivising pangolin conservation efforts at the local level.\n\nlocal map of cameras installed in nepali districts to increase pangolin conservation and monitoring\nShaded areas in Nepal represent protected land, and shaded areas surrounding camera sites represent human density in local government areas (wards of municipalities). [Screenshot taken from the paper ‘Human influence on burrow activity of the Chinese pangolin in Nepal’]\nBut this is not easy. “It is not yet a national priority like other megafaunas like tigers and rhinos. Getting a sizable budget nationally or internationally has been a struggle because we lack capacitated skilled experts to win the funds,” Khatiwada says, “On top of that, the global and Nepali economic crisis is also posing a threat to the budget.”\n\nYet Acharya is hopeful that pangolin conservation and efforts will get a place in the red book in the next fiscal year along with other national and international stakeholders being more active and effective.\n\nThe illegal trades have been operating locally. So, it can be said that local focal persons can counter it too. “So far, the network [in Makawanpur] has been voluntary to monitor pangolins, scare away poachers, and inform the police about any poachers. The network has been growing and reached 200 people,” Acharya informs.\n\nPangolins have been monitored in different parts of Nepal to save them from potential poachers. Khatiwada has led the initiative to install cameras in Taplejung, Makwanpur, Chitwan, and Gorkha. “We saw that it discouraged poachers in these areas. However, these cameras are expensive and require more monetary resources.”\n\nOther threats\nrescued pangolin from gorkha\nA pangolin rescued by the Division Forest Office, Gorkha, in 2021. Photo: Kushal Shrestha/ Greenhood Nepal\nNot only in Nepal, but pangolin conservation has also been a difficult job internationally. “There is still a lack of concrete research on pangolins internationally, resulting in limited knowledge about their preferences, behavioural patterns, migrational patterns and their role in ecological balance,” Khatiwada, says, “In turn, it also hinders the proper action.”\n\nThe pangolin population is also presumed to be decreasing due to climate change. “They are found more in hilly areas, so heavy flooding and landslides, possibly induced by climate change, as well as the forest fires in dry seasons are increasing threats to their habitat. Other than that unplanned expansion and road infrastructures have also encroached upon their habitat,” Khatiwada says.",
+									"type": "text"
+								},
+								{
+									"key": "featured_image",
+									"type": "file",
+									"src": "/Users/rameshpradhan/Desktop/pp/Curtis-Waters.jpg"
+								},
+								{
+									"key": "category",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								},
+								{
+									"key": "tag",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "tag",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/posts/11/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"11",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete post",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/posts/11/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"11",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comment",
+			"item": [
+				{
+					"name": "list all comments of a post",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/post/2/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"post",
+								"2",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a comment in post",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"message\": \"Perspiciatis minus\",\n    \"name\": \"Cara Weaver\",\n    \"email\": \"hivawo@mailinator.com\",\n    \"comment\": \"fabulous post. I am very impressed.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/post/2/comments/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"post",
+								"2",
+								"comments",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contact us",
+			"item": [
+				{
+					"name": "get contact us list",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/contacts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"contacts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get contact us detail",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/contacts/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"contacts",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create contact us",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"subject\": \"Mollitia perferendis\",\n    \"message\": \"Dolor officia alias asdf asdfasdf asdfds\",\n    \"name\": \"Summer Kerr\",\n    \"email\": \"monexuly@mailinator.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/contacts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"contacts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "partial update contact us",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"subject\": \"Mollitia perferendis\",\n    \"message\": \"Dolor officia alias asdf asdfasdf asdfds\",\n    \"name\": \"Summer Kerr\",\n    \"email\": \"monexuly@mailinator.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/contacts/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"contacts",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update contact us",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"subject\": \"Mollitia perferendis\",\n    \"message\": \"Dolor officia alias asdf asdfasdf asdfds\",\n    \"name\": \"Summer Kerr\",\n    \"email\": \"monexuly@mailinator.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/contacts/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"contacts",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete contact us",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/contacts/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"contacts",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "newsletter",
+			"item": [
+				{
+					"name": "get newsletter list",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/newsletters/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"newsletters",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get newsletter detail",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/newsletters/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"newsletters",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create newsletter",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"monexuly@mailinator.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/newsletters/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"newsletters",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "partial update newsletter",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"monexuly@mailinator.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/newsletters/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"newsletters",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update newsletter",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"monexuly@mailinator.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/newsletters/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"newsletters",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete newsletter",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rameshpradhan",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "ramesh123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/newsletters/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"newsletters",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
