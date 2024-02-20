@@ -16,7 +16,7 @@
                class="mt-2 mb-2" />
           <div class="date author">@{{ post.author.username }}</div>
           <p>
-            {{ post.content|truncatechars:200 }} <a href="{% url 'news_admin:post-detail' post.pk %}">View more</a>
+            {{ post.content|safe|truncatechars:200 }} <a href="{% url 'news_admin:post-detail' post.pk %}">View more</a>
           </p>
         </div>
       {% endfor %}

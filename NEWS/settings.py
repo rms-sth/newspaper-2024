@@ -153,3 +153,9 @@ MESSAGE_TAGS = {
     messages.WARNING: "warning",
     messages.ERROR: "danger",
 }
+
+SUMMERNOTE_CONFIG = {
+    "summernote": {
+        "width": "100%",
+    }
+}

@@ -1,6 +1,7 @@
 from django.contrib.auth.models import Group, User
 from rest_framework import serializers
-from newspaper.models import Contact, Newsletter, Post, Tag, Category, Comment
+
+from newspaper.models import Category, Comment, Contact, Newsletter, Post, Tag
 
 
 # ORM => Object Relationship Mapping
@@ -63,9 +64,6 @@ class PostSerializer(serializers.ModelSerializer):
     def validate(self, data):
         data["author"] = self.context["request"].user
         return data
-
-
-from rest_framework import serializers
 
 
 class PostPublishSerializer(serializers.Serializer):

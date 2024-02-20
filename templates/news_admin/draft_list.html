@@ -8,14 +8,14 @@
           <h1>
             <a href="{% url 'news_admin:draft-detail' post.pk %}">{{ post.title }}</a>
           </h1>
-           <img src="{{ post.featured_image.url }}"
-             alt="{{ post.title }}"
-             height="420px"
-             width="860px"
-             class="mt-2 mb-2" />
+          <img src="{{ post.featured_image.url }}"
+               alt="{{ post.title }}"
+               height="420px"
+               width="860px"
+               class="mt-2 mb-2" />
           <div class="date author">@{{ post.author.username }}</div>
           <p>
-            {{ post.content|truncatechars:200 }} <a href="{% url 'news_admin:draft-detail' post.pk %}">View more</a>
+            {{ post.content|safe|truncatechars:200 }} <a href="{% url 'news_admin:draft-detail' post.pk %}">View more</a>
           </p>
         </div>
       {% endfor %}

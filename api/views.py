@@ -16,7 +16,7 @@ from api.serializers import (
     TagSerializer,
     UserSerializer,
 )
-from newspaper.models import Category, Contact, Newsletter, Post, Tag, Comment
+from newspaper.models import Category, Comment, Contact, Newsletter, Post, Tag
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -177,9 +177,6 @@ class ContactViewSet(viewsets.ModelViewSet):
 
     def update(self, request, *args, **kwargs):
         raise exceptions.MethodNotAllowed(request.method)
-
-
-from rest_framework.views import APIView
 
 
 class CommentViewSet(APIView):

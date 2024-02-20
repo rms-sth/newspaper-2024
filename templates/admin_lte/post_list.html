@@ -37,14 +37,25 @@
                   <td>{{ post.title }}</td>
                   <td>
                     {% if post.published_at %}
-                      True
+                      <a href="{% url 'news_admin:draft-publish' post.pk %}"
+                         class="btn btn-primary disabled">Published</a>
                     {% else %}
-                      False
+                      <a href="{% url 'news_admin:draft-publish' post.pk %}"
+                         class="btn btn-primary">Publish</a>
                     {% endif %}
                   </td>
                   <td>
-                    <a href="" class="btn btn-success">Update</a>
-                    <a href="" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'news_admin:post-update' post.pk %}"
+                       class="btn btn-success">Update</a>
+                    {% if post.published_at %}
+                      <a href="{% url 'news_admin:post-detail' post.pk %}"
+                         class="btn btn-primary">View</a>
+                    {% else %}
+                      <a href="{% url 'news_admin:draft-detail' post.pk %}"
+                         class="btn btn-primary">View</a>
+                    {% endif %}
+                    <a href="{% url 'news_admin:post-delete' post.pk %}"
+                       class="btn btn-danger">Delete</a>
                   </td>
                 </tr>
               {% endfor %}

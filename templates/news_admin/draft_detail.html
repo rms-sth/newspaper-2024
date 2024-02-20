@@ -24,7 +24,7 @@
              class="btn btn-danger">Delete</a>
         </div>
         <div class="date author">@{{ post.author.username }}</div>
-        <p>{{ post.content }}</p>
+        <p class="jd-flex justify-content-start">{{ post.content|safe|linebreaksbr }}</p>
       </div>
     </div>
   </div>

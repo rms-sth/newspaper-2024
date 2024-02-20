@@ -65,9 +65,12 @@ h4 {
 .author {
   font-size: 10px;
   color: #6b441a;
-
 }
 
 .lg-icons {
   font-size: 50px !important;
+}
+
+p {
+  text-align: justify;
 }

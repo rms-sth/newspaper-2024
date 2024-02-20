@@ -24,6 +24,9 @@
                 <ul class="header-social">
                   {% if user.is_authenticated %}
                     <li>
+                      <a href="{% url 'news_admin:all-post-list' %}"><i class="fas fa-tachometer-alt"></i></a>
+                    </li>
+                    <li>
                       <a href="{% url 'report:users' %}" title="Download Users">
                         <i class="fas fa-download"></i>
                       </a>
@@ -94,7 +97,7 @@
                     <li>
                       <a href="/">Home</a>
                     </li>
-                    {% for category in categories %}
+                    {% for category in top_categories %}
                       <li>
                         <a href="{% url 'post-by-category' category.id %}">{{ category.name|title }}</a>
                       </li>

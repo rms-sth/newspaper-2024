@@ -60,4 +60,34 @@ urlpatterns = [
         views.AllPostListView.as_view(),
         name="all-post-list",
     ),
+    path(
+        "tag-create/",
+        views.TagCreateView.as_view(),
+        name="tag-create",
+    ),
+    path(
+        "tag-update/<int:pk>/",
+        views.TagUpdateView.as_view(),
+        name="tag-update",
+    ),
+    path(
+        "tag-delete/<int:pk>/",
+        views.TagDeleteView.as_view(),
+        name="tag-delete",
+    ),
+    path(
+        "category-create/",
+        views.CategoryCreateView.as_view(),
+        name="category-create",
+    ),
+    path(
+        "category-update/<int:pk>/",
+        views.CategoryUpdateView.as_view(),
+        name="category-update",
+    ),
+    path(
+        "category-delete/<int:pk>/",
+        views.CategoryDeleteView.as_view(),
+        name="category-delete",
+    ),
 ]

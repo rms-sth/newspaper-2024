@@ -23,7 +23,7 @@
                      role="tab"
                      aria-controls="nav-home"
                      aria-selected="true">All</a>
-                  {% for category in categories %}
+                  {% for category in whats_new_categories %}
                     <a class="nav-item nav-link"
                        id="nav-{{ category.name|slugify }}-tab"
                        data-toggle="tab"
@@ -67,7 +67,7 @@
                   </div>
                 </div>
               </div>
-              {% for category in categories %}
+              {% for category in whats_new_categories %}
                 <!-- Card two -->
                 <div class="tab-pane fade"
                      id="nav-{{ category.name|slugify }}"
