@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     "blog_app",
     "api",
     "report",
+    "rest_framework_swagger",  # Swagger
+    "drf_yasg",  # Yet Another Swagger generator
 ]
 
 MIDDLEWARE = [
