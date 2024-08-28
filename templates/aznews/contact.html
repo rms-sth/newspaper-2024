@@ -13,9 +13,7 @@
                    role="alert">
                 {{ message }}
 
-                {% if form.errors and form.non_field_errors %}
-                  {{ form.non_field_errors }}
-                {% endif %}
+                {% if form.errors and form.non_field_errors %}{{ form.non_field_errors }}{% endif %}
 
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
@@ -67,8 +65,8 @@
                          type="email"
                          onfocus="this.placeholder = ''"
                          onblur="this.placeholder = 'Enter email address'"
-                         placeholder="Email" 
-                         value="{{ form.email.value }}"/>
+                         placeholder="Email"
+                         value="{{ form.email.value }}" />
                   {{ form.email.errors }}
                 </div>
               </div>
@@ -80,8 +78,8 @@
                          type="text"
                          onfocus="this.placeholder = ''"
                          onblur="this.placeholder = 'Enter Subject'"
-                         placeholder="Enter Subject" 
-                         value="{{ form.subject.value }}"/>
+                         placeholder="Enter Subject"
+                         value="{{ form.subject.value }}" />
                   {{ form.subject.errors }}
                 </div>
               </div>

@@ -34,7 +34,9 @@
              class="form-control"
              name="username"
              placeholder="Enter your username..." />
+      {{ form.username.errors }}
     </div>
+    
     <div class="mb-3">
       <label for="password" class="form-label">Password</label>
       {{ form.password.errors }}

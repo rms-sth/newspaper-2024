@@ -2,18 +2,21 @@
 
 <div class="col-lg-8">
   <!-- Trending Top -->
-  <div class="trending-top mb-30">
-    <div class="trend-top-img">
-      <img src="{{ featured_post.featured_image.url }}"
-           alt="{{ featured_post.title }}" />
-      <div class="trend-top-cap">
-        <span>{{ featured_post.category.name }}</span>
-        <h2>
-          <a href="{% url 'post-detail' featured_post.pk %}">{{ featured_post.title }}</a>
-        </h2>
+  {% if featured_post %}
+    <div class="trending-top mb-30">
+      <div class="trend-top-img">
+        <img src="{{ featured_post.featured_image.url }}"
+             alt="{{ featured_post.title }}" />
+        <div class="trend-top-cap">
+          <span>{{ featured_post.category.name }}</span>
+          <h2>
+            <a href="{% url 'post-detail' featured_post.pk %}">{{ featured_post.title }}</a>
+          </h2>
+        </div>
       </div>
     </div>
-  </div>
+  {% endif %}
+ 
   <!-- Trending Bottom -->
   <div class="trending-bottom">
     <div class="row">

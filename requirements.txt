@@ -23,3 +23,8 @@ weasyprint==59.0
 
 # postgres library
 psycopg2-binary==2.9.9
+
+# swagger documentation
+django-rest-swagger==2.2.0
+drf-yasg==1.21.7
+setuptools
