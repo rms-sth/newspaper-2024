@@ -13,7 +13,6 @@
   </style>
 {% endblock extra_style %}
 {% block content %}
-
   {% if form.errors and form.non_field_errors %}
     <div class="alert alert-danger alert-dismissible fade show mt-3"
          role="alert">
@@ -24,7 +23,6 @@
               aria-label="Close"></button>
     </div>
   {% endif %}
-
   <form action="" method="post" class="m-2">
     {% csrf_token %}
     <div class="mb-3">
@@ -36,7 +34,6 @@
              placeholder="Enter your username..." />
       {{ form.username.errors }}
     </div>
-    
     <div class="mb-3">
       <label for="password" class="form-label">Password</label>
       {{ form.password.errors }}

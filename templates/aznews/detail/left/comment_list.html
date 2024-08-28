@@ -1,4 +1,22 @@
 {% load static %}
+
+{% block extra_css %}
+  <style>
+      .profileImage {
+          width: 70px;
+          height: 70px;
+          border-radius: 50%;
+          background: #512DA8;
+          font-size: 35px;
+          color: #fff;
+          text-align: center;
+          line-height: 70px;
+          margin: 20px 0;
+          display: inline-block;
+      }
+  </style>
+{% endblock extra_css %}
+
 <div class="comments-area">
   <h4>{{ post.comment_set.count }} Comments</h4>
   {% for comment in post.comment_set.all %}
@@ -6,8 +24,7 @@
       <div class="single-comment justify-content-between d-flex">
         <div class="user justify-content-between d-flex">
           <div class="thumb">
-            <img src="{% static 'aznews/assets/img/comment/comment_1.png' %}"
-                 alt="{{ comment.name }}" />
+            <div class="profileImage">{{ comment.initials }}</div>
           </div>
           <div class="desc">
             <p class="comment">{{ comment.comment }}</p>

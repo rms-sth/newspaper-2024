@@ -1,6 +1,5 @@
 {% extends "admin_lte/base.html" %}
 {% load static %}
-
 {% block extra_css %}
   <link rel="stylesheet"
         href="{% static 'admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}" />
@@ -9,7 +8,6 @@
   <link rel="stylesheet"
         href="{% static 'admin-lte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css' %}" />
 {% endblock extra_css %}
-
 {% block content %}
   <div class="row">
     <div class="col-12">
@@ -20,7 +18,6 @@
             <a href="{% url 'news_admin:tag-create' %}" class="btn btn-primary">Add</a>
           </div>
         </div>
- 
         <!-- /.card-header -->
         <div class="card-body">
           <table id="example1" class="table table-bordered table-striped">
@@ -58,9 +55,7 @@
     <!-- /.col -->
   </div>
 {% endblock content %}
-
 {% block extra_js %}
-
   <!-- DataTables  & Plugins -->
   <script src="{% static 'admin-lte/plugins/datatables/jquery.dataTables.min.js' %}"></script>
   <script src="{% static 'admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
@@ -75,12 +70,10 @@
   <script src="{% static 'admin-lte/plugins/datatables-buttons/js/buttons.print.min.js' %}"></script>
   <script src="{% static 'admin-lte/plugins/datatables-buttons/js/buttons.colVis.min.js' %}"></script>
   <script src="{% static 'admin-lte/dist/js/adminlte.min.js' %}"></script>
-
   <script>
       console.log("helo")
       $('#example1').DataTable({
 
       });
   </script>
-
 {% endblock extra_js %}

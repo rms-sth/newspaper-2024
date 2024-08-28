@@ -3,11 +3,10 @@ from datetime import timedelta
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.utils import timezone
-from django.views.generic import ListView, TemplateView, View
+from django.views.generic import DetailView, ListView, TemplateView, View
 
 from newspaper.forms import ContactForm, NewsletterForm
 from newspaper.models import Post
-from django.views.generic import DetailView
 
 
 class HomeView(ListView):
@@ -171,7 +170,7 @@ class CommentView(View):
         )
 
 
-from django.core.paginator import Paginator, PageNotAnInteger
+from django.core.paginator import PageNotAnInteger, Paginator
 from django.db.models import Q
 
 

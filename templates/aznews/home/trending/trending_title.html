@@ -5,9 +5,7 @@
       <strong>Trending now</strong>
       <div class="trending-animated">
         <ul id="js-news" class="js-hidden">
-          {% for trending_post in trending_posts %}
-            <li class="news-item">{{ trending_post.title }}</li>
-          {% endfor %}
+          {% for trending_post in trending_posts %}<li class="news-item">{{ trending_post.title }}</li>{% endfor %}
         </ul>
       </div>
     </div>

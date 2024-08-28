@@ -9,7 +9,6 @@
         <p>{{ post.published_at|date:"M" }}</p>
       </a>
     </div>
-
     <div class="blog_details">
       <a class="d-inline-block" href="{% url 'post-detail' post.pk %}">
         <h2>{{ post.title }}</h2>

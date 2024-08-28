@@ -1,5 +1,4 @@
 {% load static %}
-
 <header>
   <!-- Header Start -->
   <div class="header-area">
@@ -102,7 +101,6 @@
                         <a href="{% url 'post-by-category' category.id %}">{{ category.name|title }}</a>
                       </li>
                     {% endfor %}
- 
                     <li>
                       <a href="{% url 'about' %}">About</a>
                     </li>
