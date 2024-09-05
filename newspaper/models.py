@@ -41,6 +41,12 @@ class Post(TimeStampModel):
     def __str__(self):
         return self.title
 
+    # Fat model and thin views
+    @property
+    def latest_comments(self):
+        comments = Comment.objects.filter(post=self).order_by("-created_at")
+        return comments
+
 
 class Contact(TimeStampModel):
     message = models.TextField()
@@ -50,6 +56,10 @@ class Contact(TimeStampModel):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ["created_at"]
+        # db_table = 'newsletter'
 
 
 class UserProfile(TimeStampModel):

@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django_summernote.admin import SummernoteModelAdmin
 
 from newspaper.models import (
     Category,
@@ -18,11 +19,10 @@ admin.site.register(Comment)
 admin.site.register(Newsletter)
 
 
-from django_summernote.admin import SummernoteModelAdmin
-
-
 class PostAdmin(SummernoteModelAdmin):
     summernote_fields = ("content",)
+    list_display = ["title", "category", "author"]
+    date_hierarchy = "published_at"
 
 
 admin.site.register(Post, PostAdmin)

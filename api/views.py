@@ -193,3 +193,42 @@ class CommentViewSet(APIView):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+from django.db.models import Case, F, Q, Sum, When
+
+published_and_active = Q(status="published", published_at__isnull=False)
+
+
+class TopCategoriesListViewSet(ListAPIView):
+    """
+    List all Top categories that has maximum views_count posts
+    """
+
+    permission_classes = [permissions.AllowAny]
+    serializer_class = CategorySerializer
+
+    def get_queryset(self):
+        top_categories = (
+            Post.objects.filter(published_and_active)
+            .values("category__pk", "category__name")
+            .annotate(
+                pk=F("category__pk"),
+                name=F("category__name"),
+                max_views=Sum("views_count"),
+            )
+            .order_by("-views_count")
+            .values("pk", "name", "max_views")
+        )
+        # [2,6,5,6]
+        category_ids = [top_category["pk"] for top_category in top_categories]
+        order_by_max_views = Case(
+            *[
+                When(id=category["pk"], then=category["max_views"])
+                for category in top_categories
+            ]
+        )
+        top_categories = Category.objects.filter(pk__in=category_ids).order_by(
+            -order_by_max_views
+        )
+        return top_categories

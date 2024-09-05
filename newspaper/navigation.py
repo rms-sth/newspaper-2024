@@ -16,6 +16,16 @@ def navigation(request):
         .values("pk", "name", "max_views")
     )
     # print(top_categories)
+
+    # {"pk":1, "name":"politics", "views_count": 2}
+    # {"pk":2, "name":"technology", "views_count": 2}
+    # {"pk":1, "name":"politics", "views_count": 1}
+
+    #### FInal result
+
+    # {"pk":1, "name":"politics", "views_count": 3}
+    # {"pk":2, "name":"politics", "views_count": 1}
+    
     category_ids = [top_category["pk"] for top_category in top_categories]  # [2,6,5,6]
     order_by_max_views = Case(
         *[
