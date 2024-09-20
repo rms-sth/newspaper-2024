@@ -28,7 +28,9 @@
             <a href="{% url 'post-detail' previous_post.pk %}">
               <img class="img-fluid"
                    src="{{ previous_post.featured_image.url }}"
-                   alt="{{ previous_post.title }}" />
+                   alt="{{ previous_post.title }}"
+                   width="200px"
+                   height="150px" />
             </a>
           </div>
           <div class="arrow">
@@ -61,7 +63,9 @@
             <a href="{% url 'post-detail' next_post.pk %}">
               <img class="img-fluid"
                    src="{{ next_post.featured_image.url }}"
-                   alt="{{ next_post.title }}" />
+                   alt="{{ next_post.title }}"
+                   width="200px"
+                   height="150px" />
             </a>
           </div>
         {% endif %}
