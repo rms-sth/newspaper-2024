@@ -4,6 +4,7 @@ from rest_framework import exceptions, permissions, status, viewsets
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.filters import SearchFilter
 
 from api.serializers import (
     CategorySerializer,
@@ -76,9 +77,12 @@ class PostViewSet(viewsets.ModelViewSet):
     API endpoint that allows Posts to be viewed or edited.
     """
 
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by("-published_at")
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    filter_backends = [SearchFilter]
+    search_fields = ["title", "content"]
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -90,6 +94,22 @@ class PostViewSet(viewsets.ModelViewSet):
         if self.action in ["list", "retrieve"]:
             return [permissions.AllowAny()]
         return super().get_permissions()
+
+    # def get_queryset(self):
+    #     queryset = super().get_queryset()
+    #     if self.action in ["list", "retrieve"]:
+    #         queryset = queryset.filter(status="active", published_at__isnull=False)
+
+    #         # search start:
+    #         from django.db.models import Q
+    #         search_term = self.request.query_params.get("search", None)
+    #         if search_term:
+    #             # Search by title and content (case-insensitive)
+    #             queryset = queryset.filter(
+    #                 Q(title__icontains=search_term) | Q(content__icontains=search_term)
+    #             )
+    #         # search end
+    #     return queryset
 
 
 class DraftListViewSet(ListAPIView):
