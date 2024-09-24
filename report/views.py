@@ -1,10 +1,9 @@
 import csv
 
 from django.contrib.auth import get_user_model
-from django.http import FileResponse, HttpResponse
+from django.http import HttpResponse
 from django.views.generic import View
 
-from newspaper.models import Post
 
 User = get_user_model()
 
@@ -35,8 +34,42 @@ class UserReportView(View):
         return response
 
 
+import tempfile
+
+from django.template.loader import render_to_string
+from weasyprint import HTML
+
+from newspaper.models import Post
+
+
+class PostPdfFileView(View):
+    def get(self, request, *args, **kwargs):
+        # queryset
+        posts = Post.objects.all()  # SELECT * from post
+
+        # render
+        html_string = render_to_string("reports/posts.html", {"posts": posts})
+        html = HTML(string=html_string, base_url=request.build_absolute_uri())
+        result = html.write_pdf()
+
+        # http response
+        response = HttpResponse(content_type="application/pdf;")
+        response["Content-Disposition"] = "inline; filename=posts.pdf"
+        response["Content-Transfer-Encoding"] = "binary"
+
+        with tempfile.NamedTemporaryFile(delete=True) as output:
+            output.write(result)
+            output.flush()
+
+            with open(output.name, "rb") as f:
+                response.write(f.read())
+
+        return response
+
+
 import io
 
+from django.http import FileResponse
 from django.utils.html import strip_tags
 from django.utils.text import slugify
 from reportlab.lib.enums import TA_JUSTIFY
@@ -102,35 +135,3 @@ class PDFFileDownloadView(View):
             return FileResponse(
                 buffer, as_attachment=True, filename=f"{slugify(post.title)}.pdf"
             )
-
-
-import tempfile
-
-from django.http import HttpResponse
-from django.template.loader import render_to_string
-from weasyprint import HTML
-
-
-class PostPdfFileView(View):
-    def get(self, request, *args, **kwargs):
-        # queryset
-        posts = Post.objects.all()  # SELECT * from post
-
-        # render
-        html_string = render_to_string("reports/posts.html", {"posts": posts})
-        html = HTML(string=html_string, base_url=request.build_absolute_uri())
-        result = html.write_pdf()
-
-        # http response
-        response = HttpResponse(content_type="application/pdf;")
-        response["Content-Disposition"] = "inline; filename=posts.pdf"
-        response["Content-Transfer-Encoding"] = "binary"
-
-        with tempfile.NamedTemporaryFile(delete=True) as output:
-            output.write(result)
-            output.flush()
-
-            with open(output.name, "rb") as f:
-                response.write(f.read())
-
-        return response
