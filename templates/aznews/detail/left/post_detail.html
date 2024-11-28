@@ -1,8 +1,6 @@
 <div class="single-post">
   <div class="feature-img">
-    <img class="img-fluid"
-         src="{{ post.featured_image.url }}"
-         alt="{{ post.title }}" />
+    <img class="img-fluid" src="{{ post.featured_image.url }}" alt="{{ post.title }}" />
   </div>
   <div class="blog_details">
     <h2>{{ post.title }}</h2>
@@ -11,7 +9,13 @@
         <a href="#"><i class="fa fa-user"></i>{{ post.tag.all|join:", " }}</a>
       </li>
       <li>
-        <a href="#"><i class="fa fa-comments"></i> 03 Comments</a>
+        <a href="#"><i class="fa fa-user"></i>{{ post.author.username|lower }}</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-paste"></i>{{ post.category.name|title }}</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-comments"></i> {{ post.comment_set.count }} Comments</a>
       </li>
       <li>
         <a href="#"><i class="fa fa-eye"></i>{{ post.views_count }} Views</a>
