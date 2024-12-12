@@ -5,7 +5,7 @@ from newspaper.models import Category, Comment, Contact, Newsletter, Post, Tag
 
 
 # ORM => Object Relationship Mapping
-# Post.objects.all() => SELECT * FROM posts Queryset[<Post 1>, <Post 2>, <Post 3>]
+# Post.objects.all() => SELECT * FROM posts; => Queryset[<Post 1>, <Post 2>, <Post 3>]
 # Post.objects.create(....)
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

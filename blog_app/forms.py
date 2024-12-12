@@ -15,7 +15,14 @@ class PostForm(forms.ModelForm):
                     "placeholder": "Enter the title of post",
                 }
             ),
-            "content": SummernoteWidget(),
+            "content": SummernoteWidget(
+                attrs={
+                    "summernote": {
+                        "width": "100%",
+                        "height": "400px",
+                    },
+                }
+            ),
             "status": forms.Select(attrs={"class": "form-control"}),
             "category": forms.Select(attrs={"class": "form-control"}),
             "tag": forms.SelectMultiple(attrs={"class": "form-control"}),
