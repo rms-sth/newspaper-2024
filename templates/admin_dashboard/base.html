@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Dashboard</title>
+    <link href="{% static 'admin_dashboard/css/bootstrap.min.css' %}"
+          rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="{% static 'admin_dashboard/css/dashboard.css' %}" />
+  </head>
+  <body>
+    {% include "admin_dashboard/sidebar.html" %}
+
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+      <header>
+        Manage Your Dashboard
+      </header>
+
+      {% block content %}
+
+      {% endblock content %}
+    </div>
+
+    <script src="{% static 'admin_dashboard/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'admin_dashboard/js/dashboard.js' %}"></script>
+  </body>
+</html>

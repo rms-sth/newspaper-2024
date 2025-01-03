@@ -1,0 +1,33 @@
+{% extends "admin_dashboard/base.html" %}
+
+{% block content %}
+  <h2>Category List</h2>
+  <a href="{% url 'admin-category-create' %}" class="btn btn-success">Add New Category</a>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Created At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for category in categories %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ category.name }}</td>
+          <td>{{ category.created_at }}</td>
+          <td>
+            <a href="{% url 'admin-category-update' category.id %}"
+               class="btn btn-success">Edit</a>
+            <a href="{% url 'admin-category-delete' category.id %}"
+               class="btn btn-danger">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+{% endblock content %}

@@ -41,13 +41,14 @@ INSTALLED_APPS = [
     # 3rd party library
     "django_summernote",
     "rest_framework",
+    "rest_framework_swagger",  # Swagger
+    "drf_yasg",  # Yet Another Swagger generator
     # custom apps
     "newspaper",
     "blog_app",
     "api",
     "report",
-    "rest_framework_swagger",  # Swagger
-    "drf_yasg",  # Yet Another Swagger generator
+    "admin_dashboard",
 ]
 
 MIDDLEWARE = [
@@ -149,6 +150,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+# LOGIN_REDIRECT_URL = "admin-post-list"
 LOGIN_REDIRECT_URL = "news_admin:all-post-list"
 LOGOUT_REDIRECT_URL = "/"
 
