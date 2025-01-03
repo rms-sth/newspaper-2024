@@ -1,10 +1,11 @@
 from django.contrib.auth.models import Group, User
+from django.db import models
 from django.utils import timezone
 from rest_framework import exceptions, permissions, status, viewsets
+from rest_framework.filters import SearchFilter
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.filters import SearchFilter
 
 from api.serializers import (
     CategorySerializer,
@@ -110,6 +111,28 @@ class PostViewSet(viewsets.ModelViewSet):
     #             )
     #         # search end
     #     return queryset
+
+    def retrieve(self, request, *args, **kwargs):
+        # Get the object instance
+        instance = self.get_object()
+
+        # Increment the views_count
+        instance.views_count = models.F("views_count") + 1
+        instance.save(update_fields=["views_count"])  # Use update_fields for efficiency
+
+        # Refresh the instance from the database to ensure the updated value is reflected
+        instance.refresh_from_db()
+
+        # Serialize and return the data
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
+
+    # def retrieve(self, request, *args, **kwargs):
+    #     instance = self.get_object()
+    #     instance.views_count += 1  # Increment the views_count
+    #     instance.save(update_fields=["views_count"])  # Save only the updated field
+    #     serializer = self.get_serializer(instance)
+    #     return Response(serializer.data)
 
 
 class DraftListViewSet(ListAPIView):

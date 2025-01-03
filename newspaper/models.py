@@ -59,7 +59,7 @@ class Contact(TimeStampModel):
 
     class Meta:
         ordering = ["created_at"]
-        # db_table = 'newsletter'
+        # db_table = 'contact'
 
 
 class UserProfile(TimeStampModel):
