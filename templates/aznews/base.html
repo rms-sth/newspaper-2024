@@ -167,5 +167,31 @@
 
         })
     </script>
+
+    <script>
+        $(document).ready(function() {
+            const weatherDiv = $("#weather");
+            const latitude = 27.685482299494186;
+            const longitude = 85.34473794232817;
+            const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
+
+            $.ajax({
+                url: apiUrl,
+                method: "GET",
+                success: function(data) {
+                    console.log(data)
+                    if (data && data.current_weather) {
+                        const temperature = data.current_weather.temperature;
+                        weatherDiv.html(`Current Temperature: ${temperature}°C`);
+                    } else {
+                        weatherDiv.html("Unable to fetch weather data.");
+                    }
+                },
+                error: function() {
+                    weatherDiv.html("Error fetching weather data.");
+                }
+            });
+        });
+    </script>
   </body>
 </html>
