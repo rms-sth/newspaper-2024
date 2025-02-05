@@ -15,6 +15,9 @@ class Category(TimeStampModel):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ["name"]
+
 
 class Tag(TimeStampModel):
     name = models.CharField(max_length=100)

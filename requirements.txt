@@ -31,3 +31,6 @@ setuptools
 
 # admin theme
 django-jazzmin==3.0.1
+
+# jwt authentication
+djangorestframework_simplejwt==5.4.0

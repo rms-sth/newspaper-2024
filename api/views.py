@@ -222,12 +222,22 @@ class ContactViewSet(viewsets.ModelViewSet):
         raise exceptions.MethodNotAllowed(request.method)
 
 
+from rest_framework.serializers import ValidationError
+from django.utils.translation import gettext as _
+
+
 class CommentViewSet(APIView):
     permission_classes = [permissions.AllowAny]
 
     def get(self, request, post_id, *args, **kwargs):
+        # from translations import COMMENT_LOAD_ERROR
+
+        # raise ValidationError(_(COMMENT_LOAD_ERROR))
+        # raise ValidationError(_("Comment cannot be loaded. Please try again later."))
+
         comments = Comment.objects.filter(post=post_id).order_by("-created_at")
         serialized_data = CommentSerializer(comments, many=True).data
+
         return Response(serialized_data, status=status.HTTP_200_OK)
 
     def post(self, request, post_id, *args, **kwargs):
@@ -254,7 +264,6 @@ class TopCategoriesListViewSet(ListAPIView):
     def get_queryset(self):
         top_categories = (
             Post.objects.filter(published_and_active)
-            .values("category__pk", "category__name")
             .annotate(
                 pk=F("category__pk"),
                 name=F("category__name"),
@@ -275,3 +284,19 @@ class TopCategoriesListViewSet(ListAPIView):
             -order_by_max_views
         )
         return top_categories
+
+
+from rest_framework_simplejwt.views import TokenObtainPairView
+from api.serializers import CustomTokenObtainPairSerializer
+
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer
+
+
+# from rest_framework_simplejwt.views import TokenRefreshView
+# from api.serializers import CustomTokenRefreshSerializer
+
+
+# class CustomTokenRefreshView(TokenRefreshView):
+#     serializer_class = CustomTokenRefreshSerializer

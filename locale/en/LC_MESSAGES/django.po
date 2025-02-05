@@ -1,0 +1,16 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Comment cannot be loaded. Please try again later."
+msgstr "Comment cannot be loaded. Please try again later."
+
+msgid "No file was submitted."
+msgstr "No file was submitted."
+
+msgid "Invalid email address."
+msgstr "Invalid email address."
+
+msgid "This field is required."
+msgstr "This field is required."
+

@@ -86,3 +86,60 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = "__all__"
+
+
+from django.contrib.auth.models import User
+from rest_framework import serializers
+from newspaper.models import UserProfile
+
+
+# UserProfile Serializer
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = ["image", "address", "biography"]
+
+
+# User Serializer with embedded UserProfile data
+class UserSerializer(serializers.ModelSerializer):
+    profile = UserProfileSerializer(
+        source="userprofile", read_only=True
+    )  # Fetch related UserProfile
+
+    class Meta:
+        model = User
+        fields = ["id", "username", "email", "first_name", "last_name", "profile"]
+
+
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def get_token(self, user):
+        token = super().get_token(user)
+
+        # Serialize the user data
+        user_data = UserSerializer(user).data
+
+        # Add user information to the token
+        token["user"] = user_data  # Embedding full user data (including profile)
+
+        return token
+
+
+# from rest_framework_simplejwt.serializers import TokenRefreshSerializer
+# from rest_framework_simplejwt.tokens import RefreshToken
+
+
+# class CustomTokenRefreshSerializer(TokenRefreshSerializer):
+#     def validate(self, attrs):
+#         data = super().validate(attrs)  # Get the new access token
+
+#         # Decode refresh token to get the user
+#         refresh = RefreshToken(attrs["refresh"])
+#         user = User.objects.get(id=refresh["user_id"])  # Retrieve user from token
+
+#         # Add user data to the response
+#         data["user"] = UserSerializer(user).data  # Embed full user details
+
+#         return data

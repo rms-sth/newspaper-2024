@@ -48,3 +48,15 @@ urlpatterns = [
         name="comment-api",
     ),
 ]
+
+
+from rest_framework_simplejwt.views import  TokenRefreshView
+
+urlpatterns += [
+    path(
+        "token/", views.CustomTokenObtainPairView.as_view(), name="token_obtain_pair"
+    ),  # Login to get tokens
+    path(
+        "token/refresh/", TokenRefreshView.as_view(), name="token_refresh"
+    ),  # Refresh token
+]

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # 3rd party library
+    "rest_framework_simplejwt",
     "django_summernote",
     "rest_framework",
     "rest_framework_swagger",  # Swagger
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -157,6 +159,11 @@ LOGOUT_REDIRECT_URL = "/"
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ],
 }
 
 from django.contrib.messages import constants as messages
@@ -174,3 +181,31 @@ SUMMERNOTE_CONFIG = {
         "width": "100%",
     }
 }
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),  # Access token valid for 30 minutes
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),  # Refresh token valid for 1 day
+}
+
+# Add the languages you want to support
+from django.utils.translation import gettext_lazy as _
+
+LANGUAGES = [
+    ("en", _("English")),
+    ("ne", _("Nepali")),
+    ("hi", _("Hindi")),
+    # Add other languages if needed
+]
+
+LANGUAGE_CODE = "en-us"
+
+USE_I18N = True
+USE_L10N = True
+
+
+# Specify the path(s) where Django will look for translation files.
+LOCALE_PATHS = [
+    BASE_DIR / "locale",
+]

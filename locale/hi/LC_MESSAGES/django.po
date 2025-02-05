@@ -1,0 +1,16 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Comment cannot be loaded. Please try again later."
+msgstr "टिप्पणी लोड नहीं की जा सकी। कृपया बाद में पुनः प्रयास करें।"
+
+msgid "No file was submitted."
+msgstr "कोई फ़ाइल जमा नहीं की गई।"
+
+msgid "Invalid email address."
+msgstr "अमान्य ईमेल पता।"
+
+msgid "This field is required."
+msgstr "यह फ़ील्ड आवश्यक है।"
+

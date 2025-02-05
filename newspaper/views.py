@@ -8,8 +8,9 @@ from django.views.generic import DetailView, ListView, TemplateView, View
 from newspaper.forms import ContactForm, NewsletterForm
 from newspaper.models import Post
 
-# Post.objects.all() => ORM => Object Relationship Mapping
+# Post.objects.all() => QuerySet => ORM => Object Relationship Mapping
 # select * from posts;
+
 
 class HomeView(ListView):
     model = Post
@@ -100,7 +101,7 @@ class PostDetailView(DetailView):
         obj.views_count += 1
         obj.save()
 
-        # 7 => 1, 2, ,3 ,4 ,5, 6 => 6, 5, 4, 3, 2, 1
+        # 7 => 1, 2, 3, 4, 5, 6 => 6, 5, 4, 3, 2, 1
         context["previous_post"] = (
             Post.objects.filter(
                 published_at__isnull=False, status="active", id__lt=obj.id
@@ -109,7 +110,7 @@ class PostDetailView(DetailView):
             .first()
         )
 
-        # 8, 9 , 10 ....
+        # 8, 9, 10 ....
         context["next_post"] = (
             Post.objects.filter(
                 published_at__isnull=False, status="active", id__gt=obj.id
@@ -196,7 +197,7 @@ class PostSearchView(View):
         except PageNotAnInteger:
             posts = paginator.page(1)
         # pagination end
-        
+
         return render(
             request,
             self.template_name,
