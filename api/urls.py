@@ -28,6 +28,11 @@ urlpatterns = [
         name="draft-list-api",
     ),
     path(
+        "draft-detail/<int:pk>/",
+        views.DraftDetailView.as_view(),
+        name="draft-detail-api",
+    ),
+    path(
         "post-by-category/<int:category_id>/",
         views.PostListByCategoryViewSet.as_view(),
         name="post-list-by-category-api",
@@ -50,7 +55,7 @@ urlpatterns = [
 ]
 
 
-from rest_framework_simplejwt.views import  TokenRefreshView
+from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns += [
     path(

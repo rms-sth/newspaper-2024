@@ -3,7 +3,7 @@ from django.db import models
 from django.utils import timezone
 from rest_framework import exceptions, permissions, status, viewsets
 from rest_framework.filters import SearchFilter
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -144,6 +144,12 @@ class DraftListViewSet(ListAPIView):
         queryset = super().get_queryset()
         queryset = queryset.filter(published_at__isnull=True)
         return queryset
+
+
+class DraftDetailView(RetrieveAPIView):
+    queryset = Post.objects.filter(published_at__isnull=True)
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class PostListByCategoryViewSet(ListAPIView):
