@@ -19,7 +19,7 @@ Pillow==10.0.0
 reportlab==4.0.4
 
 # https://doc.courtbouillon.org/weasyprint/latest/first_steps.html
-weasyprint==59.0
+weasyprint==64.0
 
 # postgres library
 psycopg2-binary==2.9.9

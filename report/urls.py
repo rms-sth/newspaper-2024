@@ -11,6 +11,11 @@ urlpatterns = [
         name="users",
     ),
     path(
+        "posts/",
+        views.PostReportView.as_view(),
+        name="posts",
+    ),
+    path(
         "pdf-file/post-download/",
         views.PDFFileDownloadView.as_view(),
         name="post-pdf-download",

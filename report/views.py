@@ -34,6 +34,23 @@ class UserReportView(View):
         return response
 
 
+POST_COLUMNS = ["title", "content", "category", "published_at"]
+
+
+class PostReportView(View):
+    def get(self, request):
+        response = HttpResponse(content_type="text/csv")
+        response["Content-Disposition"] = "attachment; filename=posts.csv"
+
+        posts = Post.objects.all().only(*POST_COLUMNS).values(*POST_COLUMNS)
+
+        writer = csv.DictWriter(response, fieldnames=posts[0].keys())
+        writer.writeheader()
+        writer.writerows(posts)
+
+        return response
+
+
 import tempfile
 
 from django.template.loader import render_to_string
