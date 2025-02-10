@@ -256,7 +256,7 @@ class CommentViewSet(APIView):
 
 from django.db.models import Case, F, Q, Sum, When
 
-published_and_active = Q(status="published", published_at__isnull=False)
+published_and_active = Q(status="active", published_at__isnull=False)
 
 
 class TopCategoriesListViewSet(ListAPIView):

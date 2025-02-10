@@ -52,6 +52,11 @@ urlpatterns = [
         views.CommentViewSet.as_view(),
         name="comment-api",
     ),
+    path(
+        "top-categories/",
+        views.TopCategoriesListViewSet.as_view(),
+        name="top-categories-api",
+    ),
 ]
 
 
