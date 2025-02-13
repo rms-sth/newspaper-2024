@@ -88,6 +88,18 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+# class CommentSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Comment
+#         fields = "__all__"
+#         extra_kwargs = {"post": {"required": False}}
+
+#     def create(self, validated_data):
+#         post_id = self.context["view"].kwargs.get("post_id")
+#         validated_data["post_id"] = post_id
+#         return super().create(validated_data)
+
+
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from newspaper.models import UserProfile

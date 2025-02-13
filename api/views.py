@@ -228,12 +228,17 @@ class ContactViewSet(viewsets.ModelViewSet):
         raise exceptions.MethodNotAllowed(request.method)
 
 
-from rest_framework.serializers import ValidationError
-from django.utils.translation import gettext as _
+# from rest_framework.serializers import ValidationError
+# from django.utils.translation import gettext as _
 
 
 class CommentViewSet(APIView):
     permission_classes = [permissions.AllowAny]
+
+    def get_permissions(self):
+        if self.request.method in ["PUT", "PATCH", "DELETE"]:
+            return [permissions.IsAuthenticated()]
+        return super().get_permissions()
 
     def get(self, request, post_id, *args, **kwargs):
         # from translations import COMMENT_LOAD_ERROR
@@ -252,6 +257,88 @@ class CommentViewSet(APIView):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    def get_object(self, post_id, comment_id):
+        return Comment.objects.filter(id=comment_id, post=post_id).first()
+
+    def put(self, request, post_id, comment_id, *args, **kwargs):
+        comment = self.get_object(post_id, comment_id)
+        if not comment:
+            return Response(
+                {"detail": "Comment not found."}, status=status.HTTP_404_NOT_FOUND
+            )
+        request.data.update({"post": post_id})
+        serializer = CommentSerializer(comment, data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def patch(self, request, post_id, comment_id, *args, **kwargs):
+        comment = self.get_object(post_id, comment_id)
+        if not comment:
+            return Response(
+                {"detail": "Comment not found."}, status=status.HTTP_404_NOT_FOUND
+            )
+        serializer = CommentSerializer(comment, data=request.data, partial=True)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def delete(self, request, post_id, comment_id, *args, **kwargs):
+        comment = self.get_object(post_id, comment_id)
+        if not comment:
+            return Response(
+                {"detail": "Comment not found."}, status=status.HTTP_404_NOT_FOUND
+            )
+        comment.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# from django.shortcuts import get_object_or_404
+
+## ViewSet example of Comment
+# class CommentViewSet(viewsets.ModelViewSet):
+#     serializer_class = CommentSerializer
+#     permission_classes = [permissions.AllowAny]
+#     lookup_field = "id"
+
+#     def get_permissions(self):
+#         if self.action in ["update", "partial_update", "destroy"]:
+#             return [permissions.IsAuthenticated()]
+#         return super().get_permissions()
+
+#     def get_queryset(self):
+#         post_id = self.kwargs.get("post_id")
+#         return Comment.objects.filter(post=post_id).order_by("-created_at")
+
+#     def perform_create(self, serializer):
+#         post_id = self.kwargs.get("post_id")
+#         serializer.save(post_id=post_id)
+
+#     def update(self, request, *args, **kwargs):
+#         comment = get_object_or_404(
+#             Comment, id=kwargs.get("id"), post_id=kwargs.get("post_id")
+#         )
+#         serializer = self.get_serializer(comment, data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response(serializer.data, status=status.HTTP_200_OK)
+
+#     def partial_update(self, request, *args, **kwargs):
+#         comment = get_object_or_404(
+#             Comment, id=kwargs.get("id"), post_id=kwargs.get("post_id")
+#         )
+#         serializer = self.get_serializer(comment, data=request.data, partial=True)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response(serializer.data, status=status.HTTP_200_OK)
+
+#     def destroy(self, request, *args, **kwargs):
+#         comment = get_object_or_404(
+#             Comment, id=kwargs.get("id"), post_id=kwargs.get("post_id")
+#         )
+#         comment.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 from django.db.models import Case, F, Q, Sum, When

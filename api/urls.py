@@ -13,6 +13,9 @@ router.register(r"categories", views.CategoryViewSet)
 router.register(r"posts", views.PostViewSet)
 router.register(r"newsletters", views.NewsletterViewSet)
 router.register(r"contacts", views.ContactViewSet)
+# router.register(
+#     r"post/(?P<post_id>\d+)/comments", views.CommentViewSet, basename="comment"
+# )
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
@@ -47,10 +50,22 @@ urlpatterns = [
         views.PostPublishViewSet.as_view(),
         name="post-publish-api",
     ),
+    # path(
+    #     "post/<int:post_id>/comments/",
+    #     views.CommentViewSet.as_view(),
+    #     name="comment-api",
+    # ),
+    # List and create comments for a specific post
     path(
         "post/<int:post_id>/comments/",
         views.CommentViewSet.as_view(),
-        name="comment-api",
+        name="comment-list-api",
+    ),
+    # Detail view for update, patch, and delete a specific comment
+    path(
+        "post/<int:post_id>/comments/<int:comment_id>/",
+        views.CommentViewSet.as_view(),
+        name="comment-detail-api",
     ),
     path(
         "top-categories/",
