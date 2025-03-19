@@ -10,7 +10,7 @@
         <a href="{% url 'post-detail' trending_post.pk %}">
           <h3>{{ trending_post.title|truncatechars:30 }}</h3>
         </a>
-        <p>{{ trending_post.published_at|date:"F j, Y" }}</p>
+        <p>{{ trending_post.humanized_published_at }}</p>
       </div>
     </div>
   {% endfor %}

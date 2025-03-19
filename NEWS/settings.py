@@ -130,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Kathmandu"
 
 USE_I18N = True
 
@@ -153,7 +153,8 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 # LOGIN_REDIRECT_URL = "admin-post-list"
-LOGIN_REDIRECT_URL = "news_admin:all-post-list"
+# LOGIN_REDIRECT_URL = "news_admin:all-post-list"
+LOGIN_REDIRECT_URL = "admin-post-list"
 LOGOUT_REDIRECT_URL = "/"
 
 REST_FRAMEWORK = {

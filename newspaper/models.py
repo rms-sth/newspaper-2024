@@ -50,6 +50,20 @@ class Post(TimeStampModel):
         comments = Comment.objects.filter(post=self).order_by("-created_at")
         return comments
 
+    def humanized_published_at(self):
+        from django.utils import timezone
+        from django.utils.timesince import timesince
+
+        now = timezone.now()
+        diff = now - self.published_at
+
+        if diff.total_seconds() < 60:  # Less than 1 minute
+            return "Just now"
+        elif diff < timezone.timedelta(days=1):  # Less than 24 hours
+            return f"{timesince(self.published_at)} ago"
+        else:
+            return self.published_at.strftime("%B %d, %Y")  # "January 12, 2025"
+
 
 class Contact(TimeStampModel):
     message = models.TextField()
