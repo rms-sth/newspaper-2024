@@ -5,7 +5,6 @@ from rest_framework import exceptions, permissions, status, viewsets
 from rest_framework.filters import SearchFilter
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.response import Response
-from rest_framework.views import APIView
 
 from api.serializers import (
     CategorySerializer,
@@ -135,7 +134,7 @@ class PostViewSet(viewsets.ModelViewSet):
     #     return Response(serializer.data)
 
 
-class DraftListViewSet(ListAPIView):
+class DraftListView(ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -152,7 +151,7 @@ class DraftDetailView(RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
 
-class PostListByCategoryViewSet(ListAPIView):
+class PostListByCategoryView(ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [permissions.AllowAny]
@@ -167,7 +166,7 @@ class PostListByCategoryViewSet(ListAPIView):
         return queryset
 
 
-class PostListByTagViewSet(ListAPIView):
+class PostListByTagView(ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [permissions.AllowAny]
@@ -182,12 +181,16 @@ class PostListByTagViewSet(ListAPIView):
         return queryset
 
 
+from rest_framework.views import APIView
+from rest_framework import status
+from django.utils import timezone
+
+
 class PostPublishViewSet(APIView):
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = PostPublishSerializer
 
     def post(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data)
+        serializer = PostPublishSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             data = serializer.data
 

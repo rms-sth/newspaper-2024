@@ -1,4 +1,4 @@
-# translation_keys.py
+# translation_keys
 COMMENT_LOAD_ERROR = "Comment cannot be loaded. Please try again later."
 FILE_NOT_UPLOADED = "No file was submitted."
 INVALID_EMAIL = "Invalid email address."

@@ -27,7 +27,7 @@ urlpatterns = [
     ),
     path(
         "draft-list/",
-        views.DraftListViewSet.as_view(),
+        views.DraftListView.as_view(),
         name="draft-list-api",
     ),
     path(
@@ -37,12 +37,12 @@ urlpatterns = [
     ),
     path(
         "post-by-category/<int:category_id>/",
-        views.PostListByCategoryViewSet.as_view(),
+        views.PostListByCategoryView.as_view(),
         name="post-list-by-category-api",
     ),
     path(
         "post-by-tag/<int:tag_id>/",
-        views.PostListByTagViewSet.as_view(),
+        views.PostListByTagView.as_view(),
         name="post-list-by-tag-api",
     ),
     path(
