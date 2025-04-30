@@ -62,11 +62,11 @@ urlpatterns = [
         name="comment-list-api",
     ),
     # Detail view for update, patch, and delete a specific comment
-    path(
-        "post/<int:post_id>/comments/<int:comment_id>/",
-        views.CommentViewSet.as_view(),
-        name="comment-detail-api",
-    ),
+    # path(
+    #     "post/<int:post_id>/comments/<int:comment_id>/",
+    #     views.CommentViewSet.as_view(),
+    #     name="comment-detail-api",
+    # ),
     path(
         "top-categories/",
         views.TopCategoriesListViewSet.as_view(),

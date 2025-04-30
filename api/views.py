@@ -27,7 +27,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
     queryset = User.objects.all().order_by("date_joined")
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser]
 
 
 class GroupViewSet(viewsets.ModelViewSet):
@@ -37,7 +37,7 @@ class GroupViewSet(viewsets.ModelViewSet):
 
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser]
 
 
 class TagViewSet(viewsets.ModelViewSet):
@@ -47,7 +47,7 @@ class TagViewSet(viewsets.ModelViewSet):
 
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser]
 
     def get_permissions(self):
         if self.action in ["list", "retrieve"]:
@@ -63,7 +63,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
 
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser]
 
     def get_permissions(self):
         if self.action in ["list", "retrieve"]:
@@ -79,7 +79,7 @@ class PostViewSet(viewsets.ModelViewSet):
 
     queryset = Post.objects.all().order_by("-published_at")
     serializer_class = PostSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser]
 
     filter_backends = [SearchFilter]
     search_fields = ["title", "content"]
@@ -137,13 +137,13 @@ class PostViewSet(viewsets.ModelViewSet):
 class DraftListView(ListAPIView):
     queryset = Post.objects.filter(published_at__isnull=True)
     serializer_class = PostSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser]
 
 
 class DraftDetailView(RetrieveAPIView):
     queryset = Post.objects.filter(published_at__isnull=True)
     serializer_class = PostSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser]
 
 
 class PostListByCategoryView(ListAPIView):
@@ -182,7 +182,7 @@ from django.utils import timezone
 
 
 class PostPublishViewSet(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser]
 
     def post(self, request, *args, **kwargs):
         serializer = PostPublishSerializer(data=request.data)
@@ -205,7 +205,7 @@ class NewsletterViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action in ["list", "retrieve", "destroy"]:
-            return [permissions.IsAuthenticated()]
+            return [permissions.IsAdminUser()]
         return super().get_permissions()
 
     def update(self, request, *args, **kwargs):
@@ -219,7 +219,7 @@ class ContactViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action in ["list", "retrieve", "destroy"]:
-            return [permissions.IsAuthenticated()]
+            return [permissions.IsAdminUser()]
         return super().get_permissions()
 
     def update(self, request, *args, **kwargs):
@@ -235,7 +235,7 @@ class CommentViewSet(APIView):
 
     def get_permissions(self):
         if self.request.method in ["PUT", "PATCH", "DELETE"]:
-            return [permissions.IsAuthenticated()]
+            return [permissions.IsAdminUser()]
         return super().get_permissions()
 
     def get(self, request, post_id, *args, **kwargs):
@@ -302,7 +302,7 @@ class CommentViewSet(APIView):
 
 #     def get_permissions(self):
 #         if self.action in ["update", "partial_update", "destroy"]:
-#             return [permissions.IsAuthenticated()]
+#             return [permissions.IsAdminUser()]
 #         return super().get_permissions()
 
 #     def get_queryset(self):
