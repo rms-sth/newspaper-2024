@@ -27,7 +27,7 @@ class UserReportView(View):
 
         users = User.objects.all().only(*COLUMNS).values(*COLUMNS)
 
-        writer = csv.DictWriter(response, fieldnames=users[0].keys())
+        writer = csv.DictWriter(response, fieldnames=COLUMNS)
         writer.writeheader()
         writer.writerows(users)
 

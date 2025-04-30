@@ -181,7 +181,7 @@ class PostSearchView(View):
     template_name = "aznews/list/list.html"
 
     def get(self, request, *args, **kwargs):
-        query = request.GET["query"]  # query=plus search => title=plus or content=plus
+        query = request.GET["query"]  # query=nepal search => title=nepal or content=nepal
         post_list = Post.objects.filter(
             (Q(title__icontains=query) | Q(content__icontains=query))
             & Q(status="active")
@@ -189,7 +189,7 @@ class PostSearchView(View):
         ).order_by("-published_at")
 
         # pagination start
-        page = request.GET.get("page", 1)  # 2
+        page = request.GET.get("page", 1)  # 1
         paginate_by = 3
         paginator = Paginator(post_list, paginate_by)
         try:

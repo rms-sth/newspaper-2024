@@ -135,14 +135,9 @@ class PostViewSet(viewsets.ModelViewSet):
 
 
 class DraftListView(ListAPIView):
-    queryset = Post.objects.all()
+    queryset = Post.objects.filter(published_at__isnull=True)
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticated]
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        queryset = queryset.filter(published_at__isnull=True)
-        return queryset
 
 
 class DraftDetailView(RetrieveAPIView):
